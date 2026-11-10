@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Uma Chess · Ajedrez online</title>
+  <link rel="stylesheet" href="/web/estilo.css">
+  <script src="/config.js"></script>
+  <script src="/web/juego.js" defer></script>
+</head>
+<body>
+  <header><h1>♞ Uma Chess</h1><p>Ajedrez online para dos personas</p></header>
+  <main>
+    <section id="inicio" class="tarjeta inicio">
+      <h2>Juega con un amigo</h2>
+      <p>Crea una sala y comparte el enlace. La primera persona juega con blancas y la segunda con negras.</p>
+      <button id="crear">Crear sala</button>
+      <p id="inicio-error" role="alert"></p>
+    </section>
+    <section id="partida" class="partida oculto">
+      <div class="tablero-bloque">
+        <div id="tablero" class="tablero" aria-label="Tablero de ajedrez"></div>
+        <p id="mensaje" role="status" aria-live="polite"></p>
+      </div>
+      <aside class="tarjeta panel">
+        <h2 id="sala-titulo">Sala</h2>
+        <p id="lado"></p>
+        <p id="estado"></p>
+        <p id="jugadores"></p>
+        <label for="enlace">Enlace para invitar a otra persona</label>
+        <div class="enlace"><input id="enlace" readonly><button id="copiar">Copiar</button></div>
+        <h3>Jugadas</h3>
+        <div id="historial" class="historial" aria-live="polite"></div>
+        <div class="acciones">
+          <button id="rendirse" class="secundario">Rendirse</button>
+          <button id="tablas" class="secundario">Reclamar tablas</button>
+          <button id="revancha" class="oculto">Pedir revancha</button>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <div id="modal" class="modal oculto" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <div class="tarjeta"><h2 id="modal-titulo">Elige la coronación</h2><div id="opciones" class="opciones"></div><button id="cancelar" class="secundario">Cancelar</button></div>
+  </div>
+</body>
+</html>

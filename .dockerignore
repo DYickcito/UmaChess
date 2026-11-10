@@ -6,8 +6,8 @@ test_*.py
 .git/
 .venv/
 README.md
-build_vercel.js
-vercel.json
+frontend/
+sincronizar_frontend.py
 .gitignore
 requirements-dev.txt
 dist/

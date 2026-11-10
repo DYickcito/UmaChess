@@ -47,9 +47,11 @@ Abre `http://127.0.0.1:8000` en el navegador. Para que otra persona juegue desde
 ### Publicar también el frontend en Vercel
 
 1. Despliega primero Render y copia su URL HTTPS (por ejemplo `https://uma-chess.onrender.com`).
-2. Importa el mismo repositorio en Vercel. En las variables de entorno del proyecto, configura `RENDER_BACKEND_URL` con esa URL HTTPS, **sin barra final**. `vercel.json` construye el frontend estático y lo enlaza al backend de Render.
+2. Importa el mismo repositorio en Vercel con **Root Directory = `frontend`** y preset **Other**. En las variables de entorno del proyecto, configura `RENDER_BACKEND_URL` con esa URL HTTPS, **sin barra final**. `frontend/vercel.json` construye solo el frontend estático: evita que Vercel detecte Python e intente instalar `pygame`.
 3. Cuando sepas el dominio de Vercel, añade en las variables de entorno de **Render** `ALLOWED_ORIGINS=https://tu-sitio.vercel.app` (sin barra final). Reinicia/despliega el servicio Render. Si tienes un dominio personalizado, añade también su origen, separado por coma.
 
 Ambas URLs mostrarán el juego; las partidas se alojan siempre en Render. Comparte el enlace de invitación desde el **mismo sitio** en el que creaste la sala para que el invitado vea ese frontend. Render gratuito puede suspender servicios inactivos. Las salas se guardan **en memoria**: se pierden cuando el servicio reinicia o se duerme. Usa una sola instancia / un solo worker. Para persistencia y escalado entre instancias haría falta añadir una base de datos y coordinación (por ejemplo Redis). Vercel por sí solo no ejecuta el backend de WebSockets persistentes.
 
 Para ejecutar todas las pruebas: `python -m pip install -r requirements-dev.txt` y `python -m unittest -q`.
+
+Si modificas `web/` o vuelves a generar los sprites, ejecuta `python sincronizar_frontend.py` y sube los cambios de `frontend/` antes del siguiente despliegue en Vercel.
