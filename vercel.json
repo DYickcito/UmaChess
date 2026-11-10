@@ -1,0 +1,5 @@
+{
+  "framework": null,
+  "buildCommand": "node build_vercel.js",
+  "outputDirectory": "dist"
+}
